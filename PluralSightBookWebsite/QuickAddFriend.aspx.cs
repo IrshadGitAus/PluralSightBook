@@ -69,7 +69,7 @@ namespace PluralSightBookWebsite
                 emailBody = String.Format(@"{0} added you as a friend. Click here to register your own account and then add them as your friend:http://localhost:4927/QuickAddFriend.aspx?email={1}", MyProfile.CurrentUser.Name, Membership.GetUser().Email);
             }
 
-            Debug.Print("Sending email: " + emailBody);
+            Debug.Print("Sending email test: " + emailBody);
         }
     }
 }
