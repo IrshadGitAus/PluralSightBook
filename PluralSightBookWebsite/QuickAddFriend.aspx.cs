@@ -1,4 +1,4 @@
-﻿using PluralSightBookWebsite.Code;
+﻿using PluralSightBook.Code;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -7,69 +7,24 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using PluralSightBook.BLL;
 
-namespace PluralSightBookWebsite
+namespace PluralSightBook
 {
     public partial class QuickAddFriend : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            var context = new aspnetdbEntities();
+            string currentUserEmail = Membership.GetUser().Email;
+            string currentUserName = MyProfile.CurrentUser.Name;
+            string friendEmail = Request.QueryString["email"];
+            Guid currentUserId = (Guid)Membership.GetUser().ProviderUserKey;
 
-            var newFriend = context.Friends.CreateObject();
-            newFriend.UserId = (Guid)Membership.GetUser().ProviderUserKey;
-            newFriend.EmailAddress = Request.QueryString["email"];
+            var friendsService = new FriendsService();
+            friendsService.AddFriend(currentUserId, currentUserEmail, currentUserName, friendEmail);
 
-            context.AddToFriends(newFriend);
-
-            context.SaveChanges();
-
-
-            /*var context = new Code.aspnetdbEntities();
-            var newFriend=context.Friends.CreateObject();
-            newFriend.UserId = (Guid)Membership.GetUser().ProviderUserKey;
-            newFriend.EmailAddress = EmailTextBox.Text;
-            context.Friends.AddObject(newFriend);
-            context.SaveChanges();
-                 */
-
-            string emailBody = "";
-
-            bool isFriendMember = !String.IsNullOrWhiteSpace(Membership.GetUserNameByEmail(Request.QueryString["email"]));
-
-            if (isFriendMember)
-            {
-                //This user is already a member. Now check if he is already your friend
-
-                var friendUserId = (Guid)Membership.GetUser(Membership.GetUserNameByEmail(Request.QueryString["email"])).ProviderUserKey;
-
-                string currentUserEmail = Membership.GetUser().Email;
-                bool currentUserAlreadyFriend = context.Friends.Any(f => f.UserId == friendUserId && f.EmailAddress == currentUserEmail);
-
-                if (currentUserAlreadyFriend)
-                {
-                    //I am already in the friend list of "EmailTextBox.Text". So, you add him as a friend and let your friend know that you too have added him as your friend
-
-                    emailBody = String.Format(@"Good News! Your friend {0} just added you as a friend", Membership.GetUser().Email);
-
-                }
-                else
-                {
-                    //I am not added as a friend in the friend list of "EmailTextBox.Text". So ask him to add me as a friend
-
-                    emailBody = String.Format(@"{0} added you as a friend. Click here to add them as your friend:http://localhost:4927/QuickAddFriend.aspx?email={1}", MyProfile.CurrentUser.Name, Membership.GetUser().Email);
-
-                }
-
-            }
-            else
-            {
-                //This user is not a member
-                emailBody = String.Format(@"{0} added you as a friend. Click here to register your own account and then add them as your friend:http://localhost:4927/QuickAddFriend.aspx?email={1}", MyProfile.CurrentUser.Name, Membership.GetUser().Email);
-            }
-
-            Debug.Print("Sending email test: " + emailBody);
+            SuccessLabel.Text = "Added Friend: " + friendEmail;
         }
     }
 }

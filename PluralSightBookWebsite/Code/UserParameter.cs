@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI.WebControls;
 
-namespace PluralSightBookWebsite.Code
+namespace PluralSightBook.Code
 {
     public class UserParameter:Parameter
     {

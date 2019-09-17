@@ -1,5 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Friends.aspx.cs" Inherits="PluralSightBookWebsite.Friends" %>
-<%@ Register Namespace="PluralSightBookWebsite.Code" TagPrefix="psb" Assembly="PluralSightBookWebsite" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Friends.aspx.cs" Inherits="PluralSightBook.Friends" %>
+<%@ Register Namespace="PluralSightBook.Code" TagPrefix="psb" Assembly="PluralSightBookWebsite" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">

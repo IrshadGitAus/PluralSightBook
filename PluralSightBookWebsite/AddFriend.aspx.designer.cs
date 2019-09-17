@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PluralSightBookWebsite {
+namespace PluralSightBook {
     
     
     public partial class AddFriend {

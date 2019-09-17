@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Profile;
 using System.Web.Security;
 
-namespace PluralSightBookWebsite.Code
+namespace PluralSightBook.Code
 {
     public class MyProfile : ProfileBase
     {

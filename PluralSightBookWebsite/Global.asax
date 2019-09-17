@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="PluralSightBookWebsite.Global" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="PluralSightBook.Global" Language="C#" %>

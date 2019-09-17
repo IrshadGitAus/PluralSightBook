@@ -4,9 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using PluralSightBookWebsite.Code;
+using PluralSightBook.Code;
 
-namespace PluralSightBookWebsite
+namespace PluralSightBook
 {
     public partial class Profile : System.Web.UI.Page
     {

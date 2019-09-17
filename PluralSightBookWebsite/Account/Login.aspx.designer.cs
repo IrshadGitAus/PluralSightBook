@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PluralSightBookWebsite.Account
+namespace PluralSightBook.Account
 {
 
 
