@@ -6,6 +6,7 @@ using System.Text;
 
 namespace PluralSightBook.BLL
 {
+   
     public class UserService
     {
         public bool isEmailRegistered(string email)
